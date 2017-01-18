@@ -25,5 +25,14 @@
   
 </body>
 	<script type="text/javascript" src="webjars/jquery/3.1.1/jquery.min.js"></script>
-	<script type="text/javascript" src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>  
+	<script type="text/javascript" src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="<c:url value="/resources/theme1/js/jqBootstrapValidation.js"/>" ></script>
+    <script src="<c:url value="/resources/theme1/js/contact_me.js"/>" ></script>
+
+    <!-- Theme JavaScript -->
+    <script src=<c:url value="/resources/theme1/js/freelancer.min.js"/> ></script>  
 </html>  
