@@ -10,9 +10,9 @@
 		http://www.springframework.org/schema/context
 		http://www.springframework.org/schema/context/spring-context-3.0.xsd 
 		http://www.springframework.org/schema/mvc
-		http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
-		http://www.springframework.org/schema/context/spring-context.xsd
-		http://www.springframework.org/schema/tx ">
+		http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd		
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx-4.0.xsd ">
 		
 	<context:component-scan	base-package="com.avingenieria.controller" />
 
@@ -34,22 +34,26 @@
 		</property>
 	</bean>
 	<!-- Resource Mapping -->
-		 <mvc:resources mapping="/resources/**" location="/resources" cache-period="31556926"/>
+		  <mvc:resources mapping="/resources/**" location="/resources/" cache-period="31556926"/>
+		  <mvc:resources mapping="/webjars/**" location="classpath:/META-INF/webjars/" cache-period="31556926"/>
 	<mvc:annotation-driven />
 	<!-- Mysql connector -->
 	<beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<beans:property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<beans:property name="url" value="jdbc:mysql://localhost:3306/webav" />			
+		<beans:property name="url" value="jdbc:mysql://127.0.0.1/webav" />			
 		<beans:property name="username" value="root"/>
 		<beans:property name="password" value=""/>
+		
 	</beans:bean>
+	
 	<!-- Hibernate 4 SessionFactory Bean definition -->
+	  
 	<beans:bean id="hibernate4AnnotatedSessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<beans:property name="dataSource" ref="dataSource" />
 		<beans:property name="annotatedClasses">
 			<beans:list>
-				<beans:value>com.journaldev.spring.model.Person</beans:value>
+				<beans:value>com.avingenieria.models.User</beans:value>
 			</beans:list>
 		</beans:property>
 		<beans:property name="hibernateProperties">
@@ -61,19 +65,26 @@
 		</beans:property>
 	</beans:bean>
 	
-	<beans:bean id="userDao" class="com.avingenieria.dao.UserDaoImp">
-		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
-	</beans:bean>
-	<beans:bean id="personService" class="com.avingenieria.services.UserServiceImp">
-		<beans:property name="userDao" ref="userDao"></beans:property>
-	</beans:bean>
-	<context:component-scan base-package="com.avingenieria.controller" />
-	
-	<tx:annotation-driven transaction-manager="transactionManager"/>
-	
 	<beans:bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
 	</beans:bean>
+	
+	<beans:bean id="userDao" class="com.avingenieria.dao.UserDaoImp">
+		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+	
+	<beans:bean id="userService" class="com.avingenieria.services.UserServiceImp">
+		<beans:property name="userDao" ref="userDao"></beans:property>
+	</beans:bean>
+	
+	
+	<context:annotation-config />
+	<context:component-scan base-package="com.avingenieria.controller" />
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	
+
+	
+	
 
 	
 </beans>

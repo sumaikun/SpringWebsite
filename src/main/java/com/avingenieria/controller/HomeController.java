@@ -20,7 +20,7 @@ public class HomeController {
 	
 	@RequestMapping("/hello")
 	public ModelAndView helloWorld() {
-		System.out.println("intento generar la vista");
+		System.out.println("intento generar la vista inicial");
 		String message = "Hello World, Spring MVC @ Javatpoint";
 		return new ModelAndView("hello", "message", message);
 	}

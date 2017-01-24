@@ -8,17 +8,17 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Users")
+@Table(name="users")
 public class User {
 	
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Id
-	@Column(name="id")
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id")	
 	private int id;	
 	private String username;
 	private String password;
 	private String email;
-	private String created;
+	private String creation;
 	
 	public int getId() {
 		return id;
@@ -44,15 +44,15 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getCreated() {
-		return created;
+	public String getCreation() {
+		return creation;
 	}
-	public void setCreated(String created) {
-		this.created = created;
+	public void setCreation(String created) {
+		this.creation = created;
 	}
 	
 	public String toString(){
-		return "id= "+id+" username "+username+" password "+password+" email "+email+" created "+created;
+		return "id= "+id+" username "+username+" password "+password+" email "+email+" created "+creation;
 	}
 	
 }

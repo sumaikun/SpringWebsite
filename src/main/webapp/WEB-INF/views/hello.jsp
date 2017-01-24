@@ -16,7 +16,7 @@
                                 <i class="fa fa-search-plus fa-3x"></i>
                             </div>
                         </div>                        
-                        <img src="<c:url value="resources/theme1/images/portfolio/cabin.png"/>" class="img-responsive" alt="">
+                        <img src="<c:url value="resources/theme1/images/portafolio/cabin.png"/>" class="img-responsive" alt="">
                     </a>
                 </div>
                 <div class="col-sm-4 portfolio-item">
@@ -26,7 +26,7 @@
                                 <i class="fa fa-search-plus fa-3x"></i>
                             </div>
                         </div>
-                        <img src="<c:url value="resources/theme1/images/portfolio/cake.png"/>" class="img-responsive" alt="">
+                        <img src="<c:url value="resources/theme1/images/portafolio/cake.png"/>" class="img-responsive" alt="">
                     </a>
                 </div>
                 <div class="col-sm-4 portfolio-item">
@@ -36,7 +36,7 @@
                                 <i class="fa fa-search-plus fa-3x"></i>
                             </div>
                         </div>
-                        <img src="<c:url value="resources/theme1/images/portfolio/circus.png"/>" class="img-responsive" alt="">
+                        <img src="<c:url value="resources/theme1/images/portafolio/circus.png"/>" class="img-responsive" alt="">
                     </a>
                 </div>
                 <div class="col-sm-4 portfolio-item">
@@ -46,7 +46,7 @@
                                 <i class="fa fa-search-plus fa-3x"></i>
                             </div>
                         </div>
-                        <img src="<c:url value="resources/theme1/images/portfolio/game.png"/>" class="img-responsive" alt="">
+                        <img src="<c:url value="resources/theme1/images/portafolio/game.png"/>" class="img-responsive" alt="">
                     </a>
                 </div>
                 <div class="col-sm-4 portfolio-item">
@@ -56,7 +56,7 @@
                                 <i class="fa fa-search-plus fa-3x"></i>
                             </div>
                         </div>
-                        <img src="<c:url value="resources/theme1/images/portfolio/safe.png"/>" class="img-responsive" alt="">
+                        <img src="<c:url value="resources/theme1/images/portafolio/safe.png"/>" class="img-responsive" alt="">
                     </a>
                 </div>
                 <div class="col-sm-4 portfolio-item">
@@ -66,7 +66,7 @@
                                 <i class="fa fa-search-plus fa-3x"></i>
                             </div>
                         </div>
-                        <img src="<c:url value="resources/theme1/images/portfolio/submarine.png"/>" class="img-responsive" alt="">
+                        <img src="<c:url value="resources/theme1/images/portafolio/submarine.png"/>" class="img-responsive" alt="">
                     </a>
                 </div>
             </div>
