@@ -2,6 +2,8 @@ package com.avingenieria.dao;
 
 import java.util.List;
 
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
@@ -61,5 +63,32 @@ public class UserDaoImp implements UserDao{
 		logger.info("User loaded, details="+u);
 		return u;
 	}
+
+	
+	@Override
+	public User LogginIn(String name) {
+		User us = null;
+		try {
+			Session session;
+			try {
+				 session = this.sessionFactory.getCurrentSession();
+			} catch (HibernateException e) {
+				 session = this.sessionFactory.openSession();
+			}			
+			String squery = "from User where email = :emailParam";
+			Query query = session.createQuery(squery);
+			query.setParameter("emailParam", name);			
+			if(!query.list().isEmpty())
+			{
+				us = (User) query.list().get(0);
+			}
+		}catch(Exception e){
+			throw e;
+		}
+		
+		return us;		
+	}  
+	
+	
 
 }

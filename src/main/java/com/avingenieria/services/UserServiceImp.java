@@ -43,5 +43,14 @@ public class UserServiceImp implements UserService{
 	public User getUserById(int id) {
 		return this.userDao.getUserById(id);
 	}
+	
+	/*
+	@Transactional
+	@Override
+	public User LogginIn (String name ,String password) {
+		return this.userDao.LogginIn(name, password);
+	}*/
+	
+	
 
 }

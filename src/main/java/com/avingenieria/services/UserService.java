@@ -2,6 +2,7 @@ package com.avingenieria.services;
 
 import java.util.List;
 
+
 import org.springframework.stereotype.Service;
 
 import com.avingenieria.models.User;
@@ -12,4 +13,6 @@ public interface UserService {
 	public List<User> listUsers();	
 	public void destroy(int id);
 	public User getUserById(int id);
+	
+	
 }

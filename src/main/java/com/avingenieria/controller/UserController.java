@@ -48,7 +48,7 @@ public class UserController {
 		Timestamp currentTime = new Timestamp(System.currentTimeMillis());
 		u.setCreation(currentTime.toString());
 		System.out.println(u.toString());
-		u.setPassword(password_encrypt.cryptWithMD5(u.getPassword()));		
+		u.setPassword(password_encrypt.cryptBcrypt(u.getPassword()));		
 		
 		if(u.getId() == 0)
 		{

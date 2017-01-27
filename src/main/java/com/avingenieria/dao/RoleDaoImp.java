@@ -1,0 +1,34 @@
+package com.avingenieria.dao;
+
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Repository;
+
+import com.avingenieria.models.Role;
+
+@Repository
+public class RoleDaoImp implements RoleDao {
+	
+	private static final Logger logger = LoggerFactory.getLogger(UserDaoImp.class); 
+	private SessionFactory sessionFactory;
+	public void setSessionFactory(SessionFactory sf){
+		this.sessionFactory = sf;
+	}
+	
+	@Override
+	public List<Role> listroles() {
+		Session session = this.sessionFactory.getCurrentSession();
+		List<Role> roleList = session.createQuery("from Role").list();
+		for(Role r : roleList ){
+			logger.info("Role List :"+r);
+		}
+		return roleList ;
+	}
+	
+	
+
+}

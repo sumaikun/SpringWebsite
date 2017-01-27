@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.security.core.GrantedAuthority;
+
 @Entity
 @Table(name="users")
 public class User {
@@ -19,6 +21,7 @@ public class User {
 	private String password;
 	private String email;
 	private String creation;
+	
 	
 	public int getId() {
 		return id;

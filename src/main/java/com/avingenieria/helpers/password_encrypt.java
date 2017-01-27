@@ -2,6 +2,7 @@ package com.avingenieria.helpers;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 public class password_encrypt {
 	
@@ -24,5 +25,11 @@ public class password_encrypt {
 	        return null;
 
 
+	}
+	
+	public static String cryptBcrypt(String pass){
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(12);
+		String encrypted = encoder.encode(pass);
+		return encrypted;
 	}
 }
