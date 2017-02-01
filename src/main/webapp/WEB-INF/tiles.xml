@@ -34,8 +34,8 @@
         <put-attribute name="body" value="/WEB-INF/views/login.jsp" />  
     </definition>
     
-     <definition name="home" extends="base.definition">
-        <put-attribute name="body" value="/WEB-INF/views/home.jsp" />  
+     <definition name="home_admin" extends="base.definition">
+        <put-attribute name="body" value="/WEB-INF/views/home_admin.jsp" />  
     </definition>
   
 </tiles-definitions>  

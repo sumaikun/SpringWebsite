@@ -1,4 +1,5 @@
  <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
  <!-- Navigation -->
  <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
      <div class="container">
@@ -9,7 +10,11 @@
              </button>
              <a class="navbar-brand" href="#page-top">Start Bootstrap</a>
          </div>
-
+		
+		<!-- Auth instance -->
+		  <sec:authorize access="isAuthenticated()">
+              <c:set var="authenticated" value="${true}"/>   						
+		  </sec:authorize>
          <!-- Collect the nav links, forms, and other content for toggling -->
          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
              <ul class="nav navbar-nav navbar-right">
@@ -17,13 +22,31 @@
                      <a href="#page-top"></a>
                  </li>
                  <li class="page-scroll">
-                     <a href="#portfolio">Portfolio</a>
+                 	<c:if test="${authenticated}">
+                     	<a href="/app/admin/panel">ADMINISTRADOR</a>
+                     </c:if>
+                 	<c:if test="${!authenticated}">
+                     	<a href="#portfolio">Portfolio</a>
+                     </c:if>
                  </li>
                  <li class="page-scroll">
-                     <a href="#about">About</a>
+                 	<c:if test="${!authenticated}">
+                     	<a href="#about">About</a>
+                    </c:if> 
                  </li>
                  <li class="page-scroll">
-                     <a href="#contact">Contact</a>
+                     <c:if test="${!authenticated}">
+                     	<a href="#contact">Contact</a>
+                     </c:if>	
+                 </li>
+                 <li class="page-scroll">                   
+					 <c:if test="${authenticated}">
+						<a href="<c:url value="/logout"/>">Logout</a>
+					</c:if>
+					
+					<c:if test="${!authenticated}">
+						<a href="/app/login">Login</a>
+					</c:if>
                  </li>
              </ul>
          </div>

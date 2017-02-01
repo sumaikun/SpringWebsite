@@ -20,8 +20,9 @@
 	<body>         
         <tiles:insertAttribute name="body" />        
 	</body>
-	<div style="clear:both"><tiles:insertAttribute name="footer" /></div>  
-	<script type="text/javascript" src="<c:url value="/webjars/jquery/3.1.1/jquery.min.js"/>"></script>
+	<div style="clear:both"><tiles:insertAttribute name="footer" /></div>
+	  
+	<script type="text/javascript" src="<c:url value="/webjars/jquery/3.1.1/jquery.min.js"/>" ></script>
 	<script type="text/javascript" src="<c:url value="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"/>"></script>
 	    <!-- Plugin JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>

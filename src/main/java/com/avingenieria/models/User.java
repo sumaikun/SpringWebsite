@@ -7,13 +7,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.springframework.security.core.GrantedAuthority;
+
 
 @Entity
 @Table(name="users")
 public class User {
 	
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	
 	@Id
 	@Column(name="id")	
 	private int id;	
@@ -21,7 +21,14 @@ public class User {
 	private String password;
 	private String email;
 	private String creation;
+	private int rol;
 	
+	public int getRol() {
+		return rol;
+	}
+	public void setRol(int rol) {
+		this.rol = rol;
+	}
 	
 	public int getId() {
 		return id;
@@ -55,7 +62,7 @@ public class User {
 	}
 	
 	public String toString(){
-		return "id= "+id+" username "+username+" password "+password+" email "+email+" created "+creation;
+		return "id= "+id+" username "+username+" password "+password+" email "+email+" created "+creation+" rol "+rol;
 	}
 	
 }

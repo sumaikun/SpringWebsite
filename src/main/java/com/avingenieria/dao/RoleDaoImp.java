@@ -18,12 +18,13 @@ public class RoleDaoImp implements RoleDao {
 	public void setSessionFactory(SessionFactory sf){
 		this.sessionFactory = sf;
 	}
-	
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Role> listroles() {
 		Session session = this.sessionFactory.getCurrentSession();
-		List<Role> roleList = session.createQuery("from Role").list();
+		List<Role> roleList = session.createQuery("from Role").list();		
 		for(Role r : roleList ){
+			System.out.println("entra "+r);
 			logger.info("Role List :"+r);
 		}
 		return roleList ;

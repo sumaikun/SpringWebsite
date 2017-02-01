@@ -8,6 +8,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="rols")
 public class Role {
+	
 	@Id
 	@Column(name="id")	
 	private int id;

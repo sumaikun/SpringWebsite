@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -38,13 +40,19 @@ public class LoginController {
 	@Autowired(required=true)
 	@Qualifier(value="userService")
 		
-	public void setUserService(UserService uS){
+	public void setUserService(UserService uS){		
+		
 			this.userService = uS;
 	}
 	
 	  @RequestMapping("/login")  
 	  public ModelAndView showContacts()
 	  {  
+		  Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		  if (!(auth instanceof AnonymousAuthenticationToken)) {
+			  return new ModelAndView("hello");			   
+			}				
+		 
 	        return new ModelAndView("login");  
 	  }
 	  
@@ -63,10 +71,10 @@ public class LoginController {
 	            break;
 	        }
 	       
-	        String retstr = "redirect:/admin/test";
+	        String retstr = "redirect:/admin/panel";
 	       
 	        if("ROLE_ADMIN".equalsIgnoreCase(roleName)){
-	            retstr="redirect:/admin/test";
+	            retstr="redirect:/admin/panel";
 	        }else if("ROLE_USER".equalsIgnoreCase(roleName)){
 	            retstr="redirect:../user/test";
 	        }
@@ -115,9 +123,9 @@ public class LoginController {
 			return "redirect:/login"; funciona para jsp no spring security
 	  }*/
 	  
-	  @RequestMapping("/admin/test")  
+	  @RequestMapping("/admin/panel")  
 	  public ModelAndView security_test()
 	  {  
-	        return new ModelAndView("home");  
+	        return new ModelAndView("home_admin");  
 	  }
 }

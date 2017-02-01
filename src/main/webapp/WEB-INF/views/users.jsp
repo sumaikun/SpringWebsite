@@ -7,25 +7,35 @@
 	<%--<c:if test="${!empty listUsers}">--%>
 	<table class="table">
 	<tr>
-		<th width="80"> ID</th>
-		<th width="120">User Name</th>
-		<th width="120">User Password</th>
-		<th width="60">Edit</th>
-		<th width="60">Delete</th>
+		<th> ID</th>
+		<th>User Name</th>
+		<th>User email</th>
+		<th>User Rol</th>
+		<th>Edit</th>
+		<th>Delete</th>
 	</tr>
 	<c:forEach items="${listUsers}" var="user">
+		<c:set var="u" value="${user}" />
 		<tr>
 			<td>${user.id}</td>
 			<td>${user.username}</td>
-			<td>${user.password}</td>
-			<td><a href="<c:url value='edit/${user.id}' />" >Edit</a></td>
-			<td><a href="<c:url value='/remove/${user.id}' />" >Delete</a></td>
+			<td>${user.email}</td>
+			<td>
+			<c:if test="${user.id == 1}">
+         		Administrador
+    		</c:if>
+    		<c:if test="${user.id == 2}">
+       			Usuario
+   			</c:if>
+   			</td>
+			<td><a href="<c:url value='editUser/${user.id}' />" >Edit</a></td>
+			<td><a href="<c:url value='removeUser/${user.id}' />" >Delete</a></td>
 		</tr>
 	</c:forEach>
 	</table>
 	<%--</c:if>--%>
 	
-	<c:url var="addAction" value="/addUser.html" ></c:url>
+	<c:url var="addAction" value="addUser.html" ></c:url>
 	<form:form action="${addAction}" commandName="User" >
 		<c:if test="${!empty User.username}">	
 				<form:label path="id">
@@ -45,6 +55,15 @@
 		<div class="form-group">
 	  		<form:label path="email" class="form-control">Correo</form:label>  
 	  		<form:input type="email" path="email" autocomplete="off" class="form-control"/>
+		</div>
+		<div class="form-group">
+			<form:label path="rol" class="form-control">Rol</form:label>
+			<form:select type="select" path="rol"  class="form-control">
+				<option value="">Selecciona</option>
+				<c:forEach items="${rols}" var="rol">			
+					<option value="${rol.id}">${rol.rolename}</option>							
+				</c:forEach>
+			</form:select>	
 		</div>
 		
 		<c:if test="${empty User.username}">
